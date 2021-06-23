@@ -14,6 +14,9 @@ from pathlib import Path
 from .secret import SECRET_KEY as SK
 import os
 
+import django_heroku
+import dj_database_url
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -98,12 +101,14 @@ WSGI_APPLICATION = 'el.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
+DATABASES = {'default': dj_database_url.config()}
 
 
 # Password validation
@@ -157,3 +162,5 @@ STATIC_ROOT = os.path.join(BASE_DIR, "live-static", "static-root")
 MEDIA_URL = "/media/"
 
 MEDIA_ROOT = os.path.join(BASE_DIR, "live-static", "media-root")
+
+django_heroku.settings(locals())
