@@ -4,11 +4,9 @@ from django.contrib.auth import models as ms
 
 def user_directory_path(instance, filename):
     format = filename.split('.')[-1]
-    try:
+    if Post.objects.all().count() > 0:
         pk = 1+int(Post.objects.last().id)
-    except AttributeError:
-        pk = 1
-    except Exception:
+    else:
         pk = 1
     return 'images/{}.{}'.format(pk, format)
 
