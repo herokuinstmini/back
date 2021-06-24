@@ -6,7 +6,7 @@ def user_directory_path(instance, filename):
     format = filename.split('.')[-1]
     try:
         pk = 1+int(Post.objects.last().id)
-    except:
+    except AttributeError:
         pk = 1
     return 'images/{}.{}'.format(pk, format)
 
