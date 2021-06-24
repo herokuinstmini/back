@@ -14,6 +14,7 @@ from pathlib import Path
 from .secret import SECRET_KEY as SK
 import os
 
+import django_heroku
 import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
