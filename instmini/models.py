@@ -8,6 +8,8 @@ def user_directory_path(instance, filename):
         pk = 1+int(Post.objects.last().id)
     except AttributeError:
         pk = 1
+    except Exception:
+        pk = 1
     return 'images/{}.{}'.format(pk, format)
 
 
